@@ -99,7 +99,16 @@ create table TIPO_PRODUCTO (
     descripcion_tipo_prod varchar2(8)
 );
 /
-
+create table PRODUCTO (
+    id_producto number not null constraint producto_pk primary key,
+    tipo_product number,
+    stock number,
+    descripcion varchar2(250),
+    nombre varchar2(280),
+    fecha_restock date,
+    CONSTRAINT tipo_product_fk FOREIGN KEY(tipo_product) REFERENCES TIPO_PRODUCTO(tipo_product)
+);
+/
 create table PEDIDO_PRODUCTO (
     id_pedido number not null constraint pedido_producto_pk primary key,
     id_producto number,
@@ -117,7 +126,7 @@ create table PAGO_PEDIDO (
     CONSTRAINT id_pedido_fk FOREIGN KEY(id_pedido) REFERENCES PEDIDO(id_pedido)
 );
 /
- /*DATE '2005-01-06'*/
+ /*DATE '2005-01-06'
  INSERT INTO DEPARTAMENTO VALUES (1000, 'Ventas', 1, 02);
  INSERT INTO EMPLEADO VALUES (1515, 252531, 'Camilo', 'And', 'pasta', 'Vendedor', DATE '2001-12-10',300000, 1000, 1010);
  INSERT INTO PAGO_NOMINA VALUES(1515, 02, 2018, 100000, 250000);
@@ -131,3 +140,7 @@ create table PAGO_PEDIDO (
  INSERT INTO PEDIDO VALUES (74848, 999999, 1515, 150000);
  INSERT INTO TIPO_PRODUCTO VALUES ( 1,'Hardware');
  INSERT INTO TIPO_PRODUCTO VALUES ( 2,'Software');
+ INSERT INTO PRODUCTO VALUES (00252, 1, 0, 'Whatever', 'Tablas', DATE '2020-01-10' );
+ INSERT INTO PEDIDO_PRODUCTO VALUES (74848, 00252);
+ INSERT INTO PAGO_PEDIDO VALUES (0044, 74848, 5, 120000, DATE '2021-10-10', DATE '2020-10-10');
+ */
