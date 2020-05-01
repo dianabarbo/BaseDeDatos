@@ -1,0 +1,25 @@
+create table EMPLEADO (
+    id_empleado number not null constraint empleado_pk primary key,
+    cedula number not null,
+    nombre varchar2(32) not null,
+    apellido1 varchar2(32),
+    apellido2 varchar2(32),
+    cargo varchar2(32),
+    fecha_ingreso date,
+    salario_base number,
+    id_depártamento number,
+    id_jefe number
+);
+
+
+alter table EMPLEADO  add constraint empleado_id_empleado_uq unique (id_empleado);
+alter table EMPLEADO  add constraint empleado_cedula_uq unique (cedula);
+
+create table PAGO_NOMINA (
+    id_empleado number not null,
+    mes number,
+    anio number,
+    comision number,
+    salario_mes number,
+    CONSTRAINT id_empleado_fk FOREIGN KEY(id_empleado) REFERENCES EMPLEADO(id_empleado) 
+)
