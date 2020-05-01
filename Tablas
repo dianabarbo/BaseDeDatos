@@ -1,3 +1,9 @@
+create table DEPARTAMENTO (
+    id_departamento number not null constraint departamento_pk primary key,
+    nombre_depto varchar2(15),
+    localizacion_piso number,
+    localizacion_oficina number
+);
 create table EMPLEADO (
     id_empleado number not null constraint empleado_pk primary key,
     cedula number not null,
@@ -7,8 +13,9 @@ create table EMPLEADO (
     cargo varchar2(32),
     fecha_ingreso date,
     salario_base number,
-    id_depártamento number,
-    id_jefe number
+    id_departamento number,
+    id_jefe number,
+    CONSTRAINT id_departamento_fk FOREIGN KEY(id_departamento) REFERENCES DEPARTAMENTO(id_departamento)
 );
 
 
@@ -22,4 +29,21 @@ create table PAGO_NOMINA (
     comision number,
     salario_mes number,
     CONSTRAINT id_empleado_fk FOREIGN KEY(id_empleado) REFERENCES EMPLEADO(id_empleado) 
-)
+);
+create table PROYECTO (
+    id_proyecto number not null constraint proyecto_pk primary key,
+    nombre_proy varchar2(280),
+    fecha_limite date,
+    fecha_ingreso date
+);
+/
+
+alter table PROYECTO add constraint proyecto_id_proyecto_uq unique (id_proyecto);
+
+create table EMPLEADO_PROYECTO (
+    id_proyecto number not null,
+    id_empleado number,
+    CONSTRAINT id_empleado1_fk FOREIGN KEY(id_empleado) REFERENCES EMPLEADO(id_empleado),
+    CONSTRAINT id_proyecto_fk FOREIGN KEY(id_proyecto) REFERENCES PROYECTO(id_proyecto)
+);
+/
