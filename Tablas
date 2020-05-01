@@ -47,3 +47,87 @@ create table EMPLEADO_PROYECTO (
     CONSTRAINT id_proyecto_fk FOREIGN KEY(id_proyecto) REFERENCES PROYECTO(id_proyecto)
 );
 /
+create table TIPO_CLIENTE (
+    tipo_client number not null constraint tipo_cliente_pk primary key,
+    descripcion_tipo_cli  varchar2(15)
+);
+/
+create table ESTADO_CLIENTE (
+    estado_client number not null constraint estado_cliente_pk primary key,
+    descripcion_estado_cliente  varchar2(7)
+);
+/
+
+
+create table CLIENTE (
+    id_cliente number not null constraint cliente_pk primary key,
+    tipo_client number,
+    nombre varchar2(32),
+    apellido1 varchar2(32),
+    apellido2 varchar2(32),
+    direccion_dpto varchar2(32),
+    direccion_ciudad varchar2(32),
+    dreccion_calle varchar2(32),
+    direccion_codigo_postal number,
+    correo varchar2(100),
+    telefono_fijo number,
+    telefono_celular number,
+    id_empleado number,
+    estado_client number,
+    CONSTRAINT id_empleado3_fk FOREIGN KEY(id_empleado) REFERENCES EMPLEADO(id_empleado),
+    CONSTRAINT tipo_cliente_fk FOREIGN KEY(tipo_client) REFERENCES TIPO_CLIENTE(tipo_client),
+    CONSTRAINT estado_cliente_fk FOREIGN KEY(estado_client) REFERENCES ESTADO_CLIENTE(estado_client)
+    
+);
+/
+alter table CLIENTE add constraint cliente_id_cliente_uq unique (id_cliente);
+
+
+create table PEDIDO (
+    id_pedido number not null constraint pedido_pk primary key,
+    id_cliente number,
+    id_empleado number,
+    total_a_pagar number,
+    CONSTRAINT id_empleado4_fk FOREIGN KEY(id_empleado) REFERENCES EMPLEADO(id_empleado),
+    CONSTRAINT id_cliente_fk FOREIGN KEY(id_cliente) REFERENCES CLIENTE(id_cliente)
+);
+/
+alter table PEDIDO add constraint pedido_id_pedido_uq unique (id_pedido);
+
+create table TIPO_PRODUCTO (
+    tipo_product number not null constraint tipo_producto_pk primary key,
+    descripcion_tipo_prod varchar2(8)
+);
+/
+
+create table PEDIDO_PRODUCTO (
+    id_pedido number not null constraint pedido_producto_pk primary key,
+    id_producto number,
+    CONSTRAINT id_producto_fk FOREIGN KEY(id_producto) REFERENCES PRODUCTO(id_producto)
+);
+/
+
+create table PAGO_PEDIDO (
+    id_pago number not null constraint pago_pedido_pk primary key,
+    id_pedido number,
+    nro_pago number,
+    valor_cuota number,
+    fecha_limite date,
+    fecha_pago date,
+    CONSTRAINT id_pedido_fk FOREIGN KEY(id_pedido) REFERENCES PEDIDO(id_pedido)
+);
+/
+ /*DATE '2005-01-06'*/
+ INSERT INTO DEPARTAMENTO VALUES (1000, 'Ventas', 1, 02);
+ INSERT INTO EMPLEADO VALUES (1515, 252531, 'Camilo', 'And', 'pasta', 'Vendedor', DATE '2001-12-10',300000, 1000, 1010);
+ INSERT INTO PAGO_NOMINA VALUES(1515, 02, 2018, 100000, 250000);
+ INSERT INTO PROYECTO VALUES (0002, 'Creacion de tablas SQL', DATE '2020-05-24', DATE '2020-04-15');
+ INSERT INTO EMPLEADO_PROYECTO VALUES (0002, 1515);
+ INSERT INTO TIPO_CLIENTE VALUES (1, 'Persona natural');
+ INSERT INTO TIPO_CLIENTE VALUES (2, 'Persona juridica');
+ INSERT INTO ESTADO_CLIENTE VALUES (1, 'Antiguo');
+ INSERT INTO ESTADO_CLIENTE VALUES (2, 'Nuevo');
+ INSERT INTO CLIENTE VALUES (999999, 1, 'Patricia', 'Goes', 'Stand', 'Bolivar', 'Cartagena', 'Blas de lezo', 100011, 'patriciagoesstand@ex.com',6646655, 3018885552,1515, 1);
+ INSERT INTO PEDIDO VALUES (74848, 999999, 1515, 150000);
+ INSERT INTO TIPO_PRODUCTO VALUES ( 1,'Hardware');
+ INSERT INTO TIPO_PRODUCTO VALUES ( 2,'Software');
