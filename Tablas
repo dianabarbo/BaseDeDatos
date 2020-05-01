@@ -49,7 +49,7 @@ create table EMPLEADO_PROYECTO (
 /
 create table TIPO_CLIENTE (
     tipo_client number not null constraint tipo_cliente_pk primary key,
-    descripcion_tipo_cli  varchar2(15)
+    descripcion_tipo_cli  varchar2(16)
 );
 /
 create table ESTADO_CLIENTE (
