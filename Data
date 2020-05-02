@@ -1,19 +1,13 @@
-/*SCRIPT DE INGRESO DE DATOS*/
-
-select * from proyecto;
-select * from departamento;
-select * from empleado;
-select * from cliente;
-select * from pedido;
-select * from pago_nomina;
-select * from producto;
-
+/*DEPARTAMENTO*/ 
+INSERT INTO DEPARTAMENTO VALUES (1000, 'Ventas', 1, 02);
+INSERT INTO DEPARTAMENTO VALUES (2000, 'Contabilidad', 3, 05);
+INSERT INTO DEPARTAMENTO VALUES (3000, 'Desarrollo', 2, 04);
+INSERT INTO DEPARTAMENTO VALUES (4000, 'Gerencia', 4, 01);
 /*PROYECTO*/
-
- INSERT INTO PROYECTO VALUES (0003, 'Diseño de bas de datos', DATE '2020-05-24', DATE '2020-04-15');
- INSERT INTO PROYECTO VALUES (0004, 'Aplicación móvil', DATE '2021-05-27', DATE '2020-02-15');
- INSERT INTO PROYECTO VALUES (0005, 'Implementación clúster', DATE '2020-12-2', DATE '2019-04-18');
- INSERT INTO PROYECTO VALUES (0005, 'Algoritmo de visión por computadora', DATE '2020-10-4', DATE '2019-12-13');
+INSERT INTO PROYECTO VALUES (0003, 'Diseño de bas de datos', DATE '2020-05-24', DATE '2020-04-15');
+INSERT INTO PROYECTO VALUES (0004, 'Aplicación móvil', DATE '2021-05-27', DATE '2020-02-15');
+INSERT INTO PROYECTO VALUES (0005, 'Implementación clúster', DATE '2020-12-2', DATE '2019-04-18');
+INSERT INTO PROYECTO VALUES (0005, 'Algoritmo de visión por computadora', DATE '2020-10-4', DATE '2019-12-13');
  
 /*EMPLEADO*/
 
@@ -29,6 +23,12 @@ INSERT INTO EMPLEADO VALUES (1818, 233678, 'Ramiro', 'Diaz', 'Hernandez', 'Auxil
 INSERT INTO EMPLEADO VALUES (1919, 156085, 'Paula', 'Gonzalez', 'Paz', 'Auxiliar de desarrollo', DATE '2004-04-30',400000, 3000, 1313);
 INSERT INTO EMPLEADO VALUES (2020, 506472, 'Margarita', 'Florez', 'Romero', 'Auxiliar de desarrollo', DATE '2003-02-03',400000, 3000, 1313);
 INSERT INTO EMPLEADO VALUES (2121, 811709, 'Ruperto', 'Gutierrez', 'Raad', 'Auxiliar de desarrollo', DATE '2002-12-11',400000, 3000, 1313);
+/*TIPO CLIENTE*/
+INSERT INTO TIPO_CLIENTE VALUES (1, 'Persona natural');
+INSERT INTO TIPO_CLIENTE VALUES (2, 'Persona juridica');
+/*ESTADO CLIENTE*/
+INSERT INTO ESTADO_CLIENTE VALUES (1, 'Antiguo');
+INSERT INTO ESTADO_CLIENTE VALUES (2, 'Nuevo');
 
 /*CLIENTE*/
 
@@ -42,28 +42,26 @@ INSERT INTO CLIENTE VALUES (404736, 2, 'Constructores Ltda.', 'Bolivar', 'Cartag
 /*PEDIDO
 // id_pedido id_cliente id_empleado total_a_pagar*/
 
- INSERT INTO PEDIDO VALUES (74848, 989898, 1515, 147000);
- INSERT INTO PEDIDO VALUES (74849, 404736, 1616, 225000);
- INSERT INTO PEDIDO VALUES (74850, 989898, 1515, 34000);
- INSERT INTO PEDIDO VALUES (74851, 999999, 1616, 15000);
- INSERT INTO PEDIDO VALUES (74852, 453219, 1616, 543000);
- INSERT INTO PEDIDO VALUES (74853, 453219, 1515, 28000);
- INSERT INTO PEDIDO VALUES (74854, 404736, 1616, 328000);
- INSERT INTO PEDIDO VALUES (74855, 453219, 1515, 72500);
+INSERT INTO PEDIDO VALUES (74848, 989898, 1515, 147000);
+INSERT INTO PEDIDO VALUES (74849, 404736, 1616, 225000);
+INSERT INTO PEDIDO VALUES (74850, 989898, 1515, 34000);
+INSERT INTO PEDIDO VALUES (74851, 999999, 1616, 15000);
+INSERT INTO PEDIDO VALUES (74852, 453219, 1616, 543000);
+INSERT INTO PEDIDO VALUES (74853, 453219, 1515, 28000);
+INSERT INTO PEDIDO VALUES (74854, 404736, 1616, 328000);
+INSERT INTO PEDIDO VALUES (74855, 453219, 1515, 72500);
 
-/*DEPARTAMENTO*/
+/*TIPO PRODUCTO*/
+INSERT INTO TIPO_PRODUCTO VALUES ( 1,'Hardware');
+INSERT INTO TIPO_PRODUCTO VALUES ( 2,'Software');
 
-INSERT INTO DEPARTAMENTO VALUES (1000, 'Ventas', 1, 02);
-INSERT INTO DEPARTAMENTO VALUES (2000, 'Contabilidad', 3, 05);
-INSERT INTO DEPARTAMENTO VALUES (3000, 'Desarrollo', 2, 04);
-INSERT INTO DEPARTAMENTO VALUES (4000, 'Gerencia', 4, 01);
 
 /*PRODUCTO*/
 INSERT INTO PRODUCTO VALUES (00120, 1, 0, '13.3’’ alta resolucion, texto supernitido, 48% mas de colores', 'MacBook air 2020 ', DATE '2020-05-30',1000);
 INSERT INTO PRODUCTO VALUES (00121, 1, 0, 'Pantalla ultradelgada, televisor con inteligencia artificial, $k cinema HDR, sonido Dolby Atmos', ' Pantalla LG', DATE '2021-05-25',2000);
 INSERT INTO PRODUCTO VALUES (00212, 2, 2, 'Almacena cada bit de datos en un capacitor', ' DRAM', DATE '2021-11-14',3000);
 INSERT INTO PRODUCTO VALUES (00213, 2, 2, 'Alto rango dinamico, resolucion 4K, sonido espacial', 'Xbox one S', DATE '2020-08-10',4000);
-update producto set stock=10,  descripcion='Télefono inteligente de alta gama', nombre='iPhone X' where id_producto=252;
+
 
 /*PAGO_NOMINA*/
 
@@ -78,5 +76,12 @@ INSERT INTO PAGO_NOMINA VALUES(1818, 02, 2018, 0, 400000);
 INSERT INTO PAGO_NOMINA VALUES(1919, 02, 2018, 0, 400000);
 INSERT INTO PAGO_NOMINA VALUES(2020, 02, 2018, 0, 400000);
 INSERT INTO PAGO_NOMINA VALUES(2121, 02, 2018, 0, 400000);
-update pago_nomina set comision=1000 where id_empleado=1515;
-update pago_nomina set salario_del_mes=1000 where id_empleado=1515;
+/*SCRIPT DE INGRESO DE DATOS*/
+
+select * from proyecto;
+select * from departamento;
+select * from empleado;
+select * from cliente;
+select * from pedido;
+select * from pago_nomina;
+select * from producto;
