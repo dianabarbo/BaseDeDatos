@@ -62,9 +62,7 @@ create table ESTADO_CLIENTE (
 create table CLIENTE (
     id_cliente number not null constraint cliente_pk primary key,
     tipo_client number,
-    nombre varchar2(32),
-    apellido1 varchar2(32),
-    apellido2 varchar2(32),
+    nombre varchar2(280),
     direccion_dpto varchar2(32),
     direccion_ciudad varchar2(32),
     dreccion_calle varchar2(32),
@@ -106,6 +104,7 @@ create table PRODUCTO (
     descripcion varchar2(250),
     nombre varchar2(280),
     fecha_restock date,
+    precio number, 
     CONSTRAINT tipo_product_fk FOREIGN KEY(tipo_product) REFERENCES TIPO_PRODUCTO(tipo_product)
 );
 /
@@ -136,11 +135,11 @@ create table PAGO_PEDIDO (
  INSERT INTO TIPO_CLIENTE VALUES (2, 'Persona juridica');
  INSERT INTO ESTADO_CLIENTE VALUES (1, 'Antiguo');
  INSERT INTO ESTADO_CLIENTE VALUES (2, 'Nuevo');
- INSERT INTO CLIENTE VALUES (999999, 1, 'Patricia', 'Goes', 'Stand', 'Bolivar', 'Cartagena', 'Blas de lezo', 100011, 'patriciagoesstand@ex.com',6646655, 3018885552,1515, 1);
+ INSERT INTO CLIENTE VALUES (999999, 1, 'Patricia', 'Bolivar', 'Cartagena', 'Blas de lezo', 100011, 'patriciagoesstand@ex.com',6646655, 3018885552,1515, 1);
  INSERT INTO PEDIDO VALUES (74848, 999999, 1515, 150000);
  INSERT INTO TIPO_PRODUCTO VALUES ( 1,'Hardware');
  INSERT INTO TIPO_PRODUCTO VALUES ( 2,'Software');
- INSERT INTO PRODUCTO VALUES (00252, 1, 0, 'Whatever', 'Tablas', DATE '2020-01-10' );
+ INSERT INTO PRODUCTO VALUES (00252, 1, 0, 'Whatever', 'Tablas', DATE '2020-01-10',10000 );
  INSERT INTO PEDIDO_PRODUCTO VALUES (74848, 00252);
  INSERT INTO PAGO_PEDIDO VALUES (0044, 74848, 5, 120000, DATE '2021-10-10', DATE '2020-10-10');
  */
