@@ -19,8 +19,7 @@ create table EMPLEADO (
 );
 
 
-alter table EMPLEADO  add constraint empleado_id_empleado_uq unique (id_empleado);
-alter table EMPLEADO  add constraint empleado_cedula_uq unique (cedula);
+
 
 create table PAGO_NOMINA (
     id_empleado number not null,
@@ -38,7 +37,6 @@ create table PROYECTO (
 );
 /
 
-alter table PROYECTO add constraint proyecto_id_proyecto_uq unique (id_proyecto);
 
 create table EMPLEADO_PROYECTO (
     id_proyecto number not null,
@@ -78,7 +76,7 @@ create table CLIENTE (
     
 );
 /
-alter table CLIENTE add constraint cliente_id_cliente_uq unique (id_cliente);
+
 
 
 create table PEDIDO (
@@ -90,7 +88,7 @@ create table PEDIDO (
     CONSTRAINT id_cliente_fk FOREIGN KEY(id_cliente) REFERENCES CLIENTE(id_cliente)
 );
 /
-alter table PEDIDO add constraint pedido_id_pedido_uq unique (id_pedido);
+
 
 create table TIPO_PRODUCTO (
     tipo_product number not null constraint tipo_producto_pk primary key,
